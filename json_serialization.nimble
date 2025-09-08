@@ -20,7 +20,7 @@ requires "nim >= 1.6.0",
          "serialization",
          "stew >= 0.2.0",
          "results"
-requires "https://github.com/nitely/nim-faststreams#6b83b36e267f0bfe87c0720e1913468d0776fb9e"
+requires "https://github.com/nitely/nim-faststreams#9e8be4f24c959d4d774b8e50a5419cff5fb47f3a"
 
 let nimc = getEnv("NIMC", "nim") # Which nim compiler to use
 let lang = getEnv("NIMLANG", "c") # Which backend (c/cpp/js)
