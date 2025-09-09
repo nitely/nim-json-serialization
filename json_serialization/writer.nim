@@ -525,7 +525,7 @@ proc writeValue*[V: not void](w: var JsonWriter, value: V) {.raises: [IOError].}
       w.streamElement(s):
         # TODO Implement writeText for floats
         #      to avoid the allocation here:
-        s.write $value
+        s.writeText value
 
   elif value is seq or(value is distinct and distinctBase(value) is seq):
     autoSerializeCheck(Flavor, seq, typeof(value)):
