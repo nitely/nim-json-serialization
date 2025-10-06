@@ -293,6 +293,7 @@ suite "Test writer":
 
   test "escapes":
     check Json.encode("\x12") == """"\u0012""""
+    check Json.encode("""a\b""") == """"a\\b""""
 
   test "Empty object":
     type NoFields = object
