@@ -83,10 +83,9 @@ template flavorEnumRep*(T: type Json, rep: static[EnumRepresentation]) =
   static:
     DefaultFlavorEnumRep = rep
 
-when declared(macrocache.hasKey): # Nim 1.6 have no macrocache.hasKey
-  # Keep backward compatibility behavior, DefaultFlavor always enable all built in serialization.
-  generateJsonAutoSerializationAddon(DefaultFlavor)
-  DefaultFlavor.automaticBuiltinSerialization(true)
+# Keep backward compatibility behavior, DefaultFlavor always enable all built in serialization.
+generateJsonAutoSerializationAddon(DefaultFlavor)
+DefaultFlavor.automaticBuiltinSerialization(true)
 
 # We create overloads of these traits to force the mixin treatment of the symbols
 type DummyFlavor* = object
@@ -96,9 +95,8 @@ template flavorRequiresAllFields*(T: type DummyFlavor): bool = false
 template flavorAllowsUnknownFields*(T: type DummyFlavor): bool = false
 template flavorSkipNullFields*(T: type DummyFlavor): bool = false
 
-when declared(macrocache.hasKey): # Nim 1.6 have no macrocache.hasKey
-  generateJsonAutoSerializationAddon(DummyFlavor)
-  DummyFlavor.automaticBuiltinSerialization(false)
+generateJsonAutoSerializationAddon(DummyFlavor)
+DummyFlavor.automaticBuiltinSerialization(false)
 
 template decode*(
     Format: type Json,
@@ -148,10 +146,9 @@ template createJsonFlavor*(FlavorName: untyped,
     static:
       `FlavorName EnumRep` = rep
 
-  when declared(macrocache.hasKey): # Nim 1.6 have no macrocache.hasKey
-    generateJsonAutoSerializationAddon(FlavorName)
+  generateJsonAutoSerializationAddon(FlavorName)
 
-    # Set default to true for backward compatibility
-    # but user can call it again later with different value.
-    # Or fine tuning use `Flavor.automaticSerialization(type, true/false)`
-    FlavorName.automaticBuiltinSerialization(automaticPrimitivesSerialization)
+  # Set default to true for backward compatibility
+  # but user can call it again later with different value.
+  # Or fine tuning use `Flavor.automaticSerialization(type, true/false)`
+  FlavorName.automaticBuiltinSerialization(automaticPrimitivesSerialization)
