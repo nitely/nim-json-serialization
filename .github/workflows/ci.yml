@@ -10,7 +10,6 @@ jobs:
   build:
     uses: status-im/nimbus-common-workflow/.github/workflows/common.yml@main
     with:
-      nimble-version: 1083e4468169af049daa9e3f50d12debe47f94ca
       test-command: |
         env NIMLANG=c nimble test
         env NIMLANG=cpp nimble test
