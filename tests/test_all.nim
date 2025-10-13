@@ -9,6 +9,9 @@
 
 {. warning[UnusedImport]:off .}
 
+echo "Nim version: "
+echo (NimMajor, NimMinor)
+
 import
   test_lexer,
   test_serialization,
