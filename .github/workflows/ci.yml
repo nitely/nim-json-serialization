@@ -12,7 +12,7 @@ jobs:
     with:
       nimble-version: b920dad9ed76c6619be3ec0cfbf0dde6f9e39092
       test-command: |
-        env NIMLANG=c nimble test
-        env NIMLANG=cpp nimble test
+        env NIMLANG=c nimble test -g
+        env NIMLANG=cpp nimble test -g
 
         env nimble examples
