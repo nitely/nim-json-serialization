@@ -4,6 +4,7 @@ on:
     branches:
       - master
       - docs
+      - ci_fox_docs
   workflow_dispatch:
 
 jobs:
